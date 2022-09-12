@@ -1,0 +1,6 @@
+import stdio;
+
+func Main() -> Int {
+  stdio.Printf("Hello World");
+  return 0;
+}

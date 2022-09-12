@@ -7,7 +7,7 @@
 namespace catus::runtime::memory {
 class AbstractCollector {
 public:
-  ~AbstractCollector() { release(); };
+  virtual ~AbstractCollector() { release(); };
   virtual void release();
 
 public:

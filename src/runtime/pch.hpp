@@ -4,6 +4,8 @@
 
 #include <atomic>
 #include <chrono>
+#include <functional>
+#include <iostream>
 #include <vector>
 #include <unordered_set>
 #include <queue>

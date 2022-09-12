@@ -7,7 +7,7 @@
 #include "memory/managed_pointer/managed_pointer_gen_gc.hpp"
 
 namespace catus::runtime::memory {
-class CollectorGenGC : AbstractCollector {
+class CollectorGenGC : public AbstractCollector {
 public:
   CollectorGenGC();
   void release() override;

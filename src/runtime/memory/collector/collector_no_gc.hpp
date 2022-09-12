@@ -7,7 +7,7 @@
 #include "memory/managed_pointer/managed_pointer_no_gc.hpp"
 
 namespace catus::runtime::memory {
-class CollectorNoGC : AbstractCollector{
+class CollectorNoGC : public AbstractCollector {
 public:
   CollectorNoGC() {};
   void release() override;

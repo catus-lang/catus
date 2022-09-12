@@ -5,16 +5,24 @@
 #include "memory/collector/collector.hpp"
 
 namespace catus::runtime::fiber {
+template <typename ...Args>
 class Fiber {
 public:
-  Fiber(uintptr_t entrypoint) {};
-  ~Fiber() {};
+  Fiber(std::function<void(Fiber* self, Args...)> entrypoint);
+  ~Fiber();
 
 public:
-  void execute() {};
+  void invoke(Args... args) const;
+  void yield(); // TODO: implement
+  void recover(); // TODO: implement
 
 private:
-  uintptr_t context;
-  memory::CollectorGenGC collector;
+  uintptr_t context_; // TODO: use Coroutine class
+  std::function<void(Fiber* self, Args...)> entrypoint_;
+  memory::AbstractCollector* collector_;
+
+private:
+  bool invoked_ = false;
+  bool exited_ = false;
 };
 } // namespace catus::runtime::fiber

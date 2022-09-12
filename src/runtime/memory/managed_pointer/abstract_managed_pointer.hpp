@@ -5,7 +5,7 @@
 namespace catus::runtime::memory {
 class AbstractManagedPointer {
 public:
-  ~AbstractManagedPointer() { release(); };
+  virtual ~AbstractManagedPointer() { release(); };
   virtual void release();
 
 public:
