@@ -15,7 +15,7 @@ ManagedPointerGenGC* CollectorGenGC::allocate(size_t size) {
   collect_auto();
 
   if (size > kLargeObjectSize) {
-    ManagedPointerGenGC* pointer = new ManagedPointerGenGC(size);
+    auto pointer = new ManagedPointerGenGC(size);
     pointer->set_pointer(malloc(size));
     pointer->set_generation(1);
     allocated_gen_one_pointers_.insert(pointer);
@@ -29,7 +29,7 @@ ManagedPointerGenGC* CollectorGenGC::allocate(size_t size) {
     return allocate(size);
   }
 
-  ManagedPointerGenGC* pointer = new ManagedPointerGenGC(size);
+  auto pointer = new ManagedPointerGenGC(size);
   pointer->set_pointer((void*)((size_t)gen_zero_pool_ + gen_zero_pooL_offset_));
   pointer->set_generation(0);
   allocated_gen_zero_pointers_.insert(pointer);
@@ -38,12 +38,12 @@ ManagedPointerGenGC* CollectorGenGC::allocate(size_t size) {
 }
 
 void CollectorGenGC::release() {
-  for (ManagedPointerGenGC* pointer: allocated_gen_zero_pointers_) {
+  for (auto pointer: allocated_gen_zero_pointers_) {
     delete pointer;
   }
   free(gen_zero_pool_);
 
-  for (ManagedPointerGenGC* pointer: allocated_gen_one_pointers_) {
+  for (auto pointer: allocated_gen_one_pointers_) {
     if (pointer->get() != nullptr) {
       free((void*)pointer->get());
       pointer->set_pointer(nullptr);

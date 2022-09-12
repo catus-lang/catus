@@ -14,7 +14,6 @@ Fiber<Args...>::~Fiber() {
 
 template <typename ...Args>
 void Fiber<Args...>::invoke(Args... args) const {
-  invoked_ = true;
   entrypoint_(this, args...);
   exited_ = true;
 }

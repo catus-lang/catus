@@ -22,7 +22,6 @@ private:
   memory::AbstractCollector* collector_;
 
 private:
-  bool invoked_ = false;
   bool exited_ = false;
 };
 } // namespace catus::runtime::fiber
