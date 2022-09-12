@@ -1,6 +1,6 @@
-import stdio;
+import stdio
 
-func Main() -> Int {
-  stdio.Printf("Hello World");
-  return 0;
+func Main(Array<string> _) -> Int {
+  stdio.Printf("Hello World")
+  return 0
 }

@@ -5,4 +5,7 @@ project(catus)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(cmake/SetupGoogleTest.cmake)
+
 add_subdirectory(runtime)
+add_subdirectory(tests)

@@ -2,18 +2,15 @@
 
 using namespace catus::runtime::fiber;
 
-template <typename ...Args>
-Fiber<Args...>::Fiber(std::function<void(Fiber* self, Args...)> entrypoint) : entrypoint_(entrypoint) {
+Fiber::Fiber(std::function<int32_t(const Fiber* self, uint64_t argc, void* argv)> entrypoint) : entrypoint_(entrypoint) {
   collector_ = new memory::CollectorGenGC();
 }
 
-template <typename ...Args>
-Fiber<Args...>::~Fiber() {
+Fiber::~Fiber() {
   delete collector_;
 }
 
-template <typename ...Args>
-void Fiber<Args...>::invoke(Args... args) const {
-  entrypoint_(this, args...);
+void Fiber::invoke(uint64_t argc, void* argv) {
+  exit_code_ = entrypoint_(this, argc, argv);
   exited_ = true;
 }
