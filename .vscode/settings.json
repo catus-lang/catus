@@ -1,0 +1,19 @@
+{
+  "editor.tabSize": 2,
+  "cmake.sourceDirectory": "${workspaceFolder}/src",
+  "files.associations": {
+    "atomic": "cpp",
+    "__bit_reference": "cpp",
+    "__hash_table": "cpp",
+    "__split_buffer": "cpp",
+    "array": "cpp",
+    "deque": "cpp",
+    "iterator": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "vector": "cpp",
+    "memory": "cpp",
+    "string": "cpp",
+    "chrono": "cpp"
+  }
+}

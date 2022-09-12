@@ -1,0 +1,1 @@
+Checks: -checks=-*,clang-analyzer-*,bugprone-*,-bugprone-narrowing-conversions,performance-*,concurrency-*
