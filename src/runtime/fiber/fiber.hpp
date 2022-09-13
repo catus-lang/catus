@@ -5,6 +5,8 @@
 #include "memory/collector/collector.hpp"
 
 namespace catus::runtime::fiber {
+class Thread;
+
 class Fiber {
 public:
   Fiber(std::function<int32_t(const Fiber* self, uint64_t argc, void* argv)> entrypoint);
@@ -15,14 +17,16 @@ public:
   void yield(); // TODO: implement
   void recover(); // TODO: implement
 
+public:
+  void set_ideal_thread(Thread* thread);
+
 private:
   uintptr_t context_; // TODO: use Coroutine class
   std::function<int32_t(const Fiber* self, uint64_t argc, void* argv)> entrypoint_;
   memory::AbstractCollector* collector_;
 
 private:
-  uintptr_t ideal_thread_ = 0; // use Thread class
-  bool ideal_thread_fixed_ = false;
+  Thread* ideal_thread_ = nullptr;
 
 private:
   bool exited_ = false;

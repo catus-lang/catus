@@ -18,6 +18,7 @@ set(CATUS_RUNTIME_SOURCE_FILES
   exports.cpp
   fiber/fiber.cpp
   fiber/scheduler.cpp
+  fiber/thread.cpp
   memory/collector/collector_gen_gc.cpp
   memory/collector/collector_no_gc.cpp
 )
